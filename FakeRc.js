@@ -1,4 +1,4 @@
-import React, { Fragment, Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { Doughnut } from 'react-chartjs-2'
 import styled, { css } from 'styled-components'
 
@@ -20,7 +20,15 @@ const Input = styled.input`
   width: 50%;
 `
 const Submit = styled.input`
-  color: var(--darkPink);
+  color: var(--green);
+  background: var(--pink);
+  text-align: center;
+  padding: 0.5rem;
+  border-radius: 5px;
+  box-shadow: 0.5rem;
+`
+const Button = styled.button`
+  color: var(--green);
   background: var(--pink);
   text-align: center;
   padding: 0.5rem;
@@ -61,6 +69,15 @@ export default class extends Component {
     })
   }
 
+  handleClear = () => {
+    this.setState({
+      malih: '',
+      bolot: '',
+      sah: '',
+      tidakSah: '',
+    })
+  }
+
   handleSubmit = e => {
     e.preventDefault()
 
@@ -77,7 +94,7 @@ export default class extends Component {
       parseInt(this.state.sah) < 0 ||
       parseInt(this.state.tidakSah) < 0
     ) {
-      window.alert('Boi! Kaga boleh minus. Ane bilangin Om Budi Anduk lho!')
+      window.alert('Boi! Kaga boleh minus. Ane bilangin Om Budi lho!')
     } else if (
       parseInt(this.state.malih) + parseInt(this.state.bolot) !==
       parseInt(this.state.sah)
@@ -171,9 +188,12 @@ export default class extends Component {
               </label>
             </Box>
             <Submit type="submit" value="Submit [Fake Server]" />
-            {/* <Button type="submit">Submit [Fake Server]</Button> */}
+            <Button type="button" onClick={this.handleClear}>
+              Clear
+            </Button>
           </Grid>
         </form>
+        <br />
         <Doughnut data={data} />
         <Total>
           <h3>Total Keseluruhan Suara</h3>
