@@ -2,4 +2,4 @@
 
 Education Purpose: Conditional Statement In Validation
 
-https://www.alfieqashwa.me/fake-real-count/
+https://www.alfieqashwa.me/fake-real-count-app/
